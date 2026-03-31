@@ -1,0 +1,22 @@
+.moves-list {
+  max-height: 200px;
+  overflow-y: auto;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border2) transparent;
+}
+.moves-empty { color: var(--text3); font-style: italic; font-size: 0.78rem; }
+
+.move-row {
+  display: flex;
+  gap: 4px;
+  padding: 2px 0;
+  border-bottom: 1px solid var(--border);
+}
+.move-row:last-child { border-bottom: none; }
+
+.move-num { color: var(--text3); width: 28px; flex-shrink: 0; }
+.move-san { width: 56px; padding: 1px 4px; border-radius: 4px; color: var(--text2); }
+.move-san.white-move { color: var(--text); }
+.move-san:hover { background: var(--surface2); color: var(--text); cursor: default; }

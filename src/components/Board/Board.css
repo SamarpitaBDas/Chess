@@ -1,0 +1,116 @@
+.board-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  user-select: none;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, 72px);
+  grid-template-rows: repeat(8, 72px);
+  border: 2px solid #1a1a1a;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+
+.square {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: filter 0.1s;
+}
+.square:hover { filter: brightness(1.08); }
+
+.square.light { background: var(--light-sq); }
+.square.dark  { background: var(--dark-sq); }
+
+.square.selected {
+  background: var(--selected) !important;
+}
+.square.last-move {
+  background: var(--last-move) !important;
+}
+.square.in-check {
+  background: var(--check) !important;
+}
+.square.hint {
+  background: var(--hint) !important;
+}
+
+/* Legal move indicator */
+.move-dot {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+.move-dot.dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--legal);
+}
+.move-dot.capture-ring {
+  inset: 0;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 6px var(--legal);
+}
+
+/* Piece image */
+.piece-img {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.45));
+  transition: transform 0.08s;
+}
+.square:hover .piece-img {
+  transform: scale(1.06);
+}
+
+/* Rank & file coordinate labels */
+.rank-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(72px * 8);
+  padding: 2px 0;
+}
+.rank-labels span,
+.file-labels span {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+  text-align: center;
+  line-height: 72px;
+}
+.file-labels {
+  display: flex;
+  width: calc(72px * 8);
+  margin-top: 2px;
+}
+.file-labels span {
+  width: 72px;
+  text-align: center;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .board {
+    grid-template-columns: repeat(8, 44px);
+    grid-template-rows: repeat(8, 44px);
+  }
+  .square { width: 44px; height: 44px; }
+  .piece-img { width: 40px; height: 40px; }
+  .rank-labels { height: calc(44px * 8); }
+  .rank-labels span,
+  .file-labels span { line-height: 44px; width: 44px; }
+  .file-labels { width: calc(44px * 8); }
+}
