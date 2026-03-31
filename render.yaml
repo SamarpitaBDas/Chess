@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: chess-ai
+    env: static
+    buildCommand: npm install && cp node_modules/stockfish/src/stockfish-nnue-16.js public/stockfish/stockfish.js || cp node_modules/stockfish/src/stockfish.js public/stockfish/stockfish.js || true && npm run build
+    staticPublishPath: dist
+    headers:
+      - path: /*
+        name: Cross-Origin-Opener-Policy
+        value: same-origin
+      - path: /*
+        name: Cross-Origin-Embedder-Policy
+        value: require-corp
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

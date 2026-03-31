@@ -120,6 +120,54 @@
   line-height: 1.6;
 }
 
+.explain-section { margin-bottom: 1rem; }
+
+.provider-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.provider-btn {
+  flex: 1;
+  font-size: 0.82rem;
+  padding: 7px 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--text2);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  font-weight: 500;
+}
+.provider-btn:hover { background: var(--surface2); color: var(--text); }
+.provider-btn.active { background: var(--surface2); font-weight: 600; }
+
+.no-key-msg {
+  font-size: 0.82rem;
+  color: var(--text3);
+  line-height: 1.6;
+  padding: 10px 12px;
+  background: var(--surface2);
+  border-radius: var(--radius);
+}
+.no-key-msg code {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  background: var(--border);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: var(--text2);
+}
+
+.reanalyze-btn {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  color: var(--text3);
+  border-color: var(--border);
+}
+.reanalyze-btn:hover { color: var(--text2); }
+
 .error-msg {
   font-size: 0.8rem;
   color: var(--danger);
